@@ -11,10 +11,18 @@ namespace ProductService.Controllers
     public class ProductController : ControllerBase
     {
         static List<Product> products = null;
-
-        public ProductController()
+        ILogger<ProductController> _logger;
+        static readonly log4net.ILog _log4net = 
+            log4net.LogManager.GetLogger(typeof(ProductController));
+        public ProductController(ILogger<ProductController> logger)
         {
-            if(products==null)
+
+            _logger = logger;
+            if (products == null)
+            { 
+                _log4net.Error("Pl provide data for products");
+            }
+            else
             {
                 products = new List<Product>()
                 {
@@ -23,17 +31,19 @@ namespace ProductService.Controllers
                     new Product(){ Id=2,Name="Scanner", Description="Gray in color", QtyStock=10}
                 };
             }
-
-        }
+            }
         [HttpGet]
         public List<Product> Get()
         {
+
+            _logger.LogInformation("Inside Get Method");
             return products;
         }
 
         [HttpGet("{id}")]
         public Product GetProductById(int id)
         {
+            _logger.LogInformation("Inside Display Method");
             return products.FirstOrDefault(x => x.Id == id);
         }
         [HttpPost]

@@ -1,4 +1,6 @@
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using System.Reflection;
 
 namespace ProductService
 {
@@ -7,9 +9,11 @@ namespace ProductService
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var log4netRepository = log4net.LogManager.GetRepository(Assembly.GetEntryAssembly());
+            log4net.Config.XmlConfigurator.Configure(log4netRepository, new FileInfo("log4net.config"));
 
             // Add services to the container.
-
+            //builder.Logging.AddConfiguration();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             

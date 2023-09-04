@@ -6,74 +6,75 @@
     {
       "UpstreamPathTemplate": "/myapp/product",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/product",
+      "DownstreamPathTemplate": "/api/products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5244
+          "Host": "product-api",
+          "Port": 8004
         }
       ]
     },
     {
       "UpstreamPathTemplate": "/myapp/product/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "DownstreamPathTemplate": "/api/product/{id}",
+      "DownstreamPathTemplate": "/api/products/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5244
+          "Host": "product-api",
+          "Port": 8004
         }
       ]
     },
     {
       "UpstreamPathTemplate": "/myapp/product",
       "UpstreamHttpMethod": [ "Post", "Put" ],
-      "DownstreamPathTemplate": "/api/product",
+      "DownstreamPathTemplate": "/api/products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5244
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/myapp/user",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/api/users",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/myapp/user/{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ],
-      "DownstreamPathTemplate": "/api/users/{id}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
-        }
-      ]
-    },
-    {
-      "UpstreamPathTemplate": "/myapp/user",
-      "UpstreamHttpMethod": [ "Post", "Put" ],
-      "DownstreamPathTemplate": "/api/users",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5002
+          "Host": "product-api",
+          "Port": 8004
         }
       ]
     }
+    //,
+    //{
+    //  "UpstreamPathTemplate": "/myapp/user",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "DownstreamPathTemplate": "/api/users",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 5002
+    //    }
+    //  ]
+    //},
+    //{
+    //  "UpstreamPathTemplate": "/myapp/user/{id}",
+    //  "UpstreamHttpMethod": [ "Get", "Delete" ],
+    //  "DownstreamPathTemplate": "/api/users/{id}",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 5002
+    //    }
+    //  ]
+    //},
+    //{
+    //  "UpstreamPathTemplate": "/myapp/user",
+    //  "UpstreamHttpMethod": [ "Post", "Put" ],
+    //  "DownstreamPathTemplate": "/api/users",
+    //  "DownstreamScheme": "http",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "localhost",
+    //      "Port": 5002
+    //    }
+    //  ]
+    //}
   ]
 }

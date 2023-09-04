@@ -9,15 +9,18 @@ namespace UserService.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
+        ILogger<UsersController> _logger;
         UserS _user;
-        public UsersController(UserS user)
+        public UsersController(UserS user, ILogger<UsersController> logger)
         {
             _user = user;
+            _logger = logger;
         }
         // GET: api/<UsersController>
         [HttpGet]
         public List<User> Get()
         {
+            _logger.LogInformation("Inside Get Method");
             return _user.GetUsers().ToList();
         }
 
@@ -25,6 +28,8 @@ namespace UserService.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            _logger.LogInformation("Inside Get 1 Method");
+
             return "value";
         }
 

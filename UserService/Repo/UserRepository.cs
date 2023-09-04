@@ -1,10 +1,16 @@
-﻿using UserService.IRepo;
+﻿using UserService.Context;
+using UserService.IRepo;
 using UserService.Models;
 
 namespace UserService.Repo
 {
     public class UserRepository : IUserRepository
     {
+        UserDBContext _context;
+        public UserRepository(UserDBContext context)
+        {
+            _context = context;
+        }
         public User AddUser(User user)
         {
             throw new NotImplementedException();
@@ -22,12 +28,12 @@ namespace UserService.Repo
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Users.FirstOrDefault(x => x.Id == id);
         }
 
         public List<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return _context.Users.ToList();
         }
     }
 }
